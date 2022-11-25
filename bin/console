@@ -1,0 +1,11 @@
+#! /usr/bin/env ruby
+# HAJ
+
+require 'bundler/setup'
+require 'chunky_png'
+
+#require 'pry'
+#Pry.start
+
+require 'irb'
+IRB.start(__FILE__)
