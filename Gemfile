@@ -6,5 +6,6 @@ gemspec
 
 
 gem 'chunky_png'
+gem 'rake'
 #gem 'rspec'
 #gem 'rubocop'
