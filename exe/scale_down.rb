@@ -2,7 +2,7 @@
 # HAJ
 
 require 'optparse'
-require 'chunky_png'
+require_relative '../lib/image_handler'
 require 'pry'
 
 options = {}
@@ -15,26 +15,6 @@ option_parser = OptionParser.new do |opts|
 end
 
 
-class ImageHandler
-
-  attr_accessor :filename
-  attr_accessor :image
-  attr_accessor :resize_factor
-
-  def initialize(filename)
-    raise "'#{filename}' not exists" if not File.exists?(filename)
-    @image = ChunkyPNG::Image.from_file filename
-    @resize_factor = 0.5
-  end
-
-  def resize(filename)
-    @new_img = @image.resize(@image.width * resize_factor, @image.height * resize_factor)
-  end
-
-  def save(path)
-    @new_img.save(path)
-  end
-end
 
 option_parser.parse!
 if ARGV.empty?
@@ -43,15 +23,14 @@ if ARGV.empty?
   exit 1
 end
 
-binding.pry
-
 ARGV.each do |file|
   if !File.exist?(file)
     puts "#{file} not exists"
   end
 
   handler = ImageHandler.new( file )
-  handler.resize( file )
-  handler.save("#{options[:output_directory]}/#{file}")
+  handler.resize
+  output_path = "#{ options[:output_directory] }/#{ File.basename(file) }"
+  handler.save(output_path)
 end
 
