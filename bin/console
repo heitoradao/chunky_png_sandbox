@@ -3,6 +3,7 @@
 
 require 'bundler/setup'
 require 'chunky_png'
+require_relative '../lib/image_handler'
 
 #require 'pry'
 #Pry.start

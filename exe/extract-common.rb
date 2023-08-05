@@ -14,6 +14,9 @@ end
 width = images[0].width
 height = images[0].height
 
+# assert that all images have the same size
+images.all? { |i| i.width == width && i.height == height }
+
 img_common = ChunkyPNG::Image.new(width, height, ChunkyPNG::Color::TRANSPARENT)
 
 
