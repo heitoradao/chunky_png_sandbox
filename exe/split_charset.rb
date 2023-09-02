@@ -6,7 +6,7 @@ require 'optparse'
 
 options = {
   input: 'input/character1.png',
-  basename: 'part_',
+  output: 'part_',
   n: nil
 }
 
@@ -15,8 +15,8 @@ option_parser = OptionParser.new do |opts|
     options[:input] = filename
   end
 
-  opts.on('-b', '--basename BASENAME') do |basename|
-    options[:basename] = basename
+  opts.on('-o', '--output FILENAME') do |basename|
+    options[:output] = basename
   end
 
   opts.on('-n INDEX') do |index|
@@ -61,6 +61,6 @@ NUM_SPRITE_SHEET_IN_COLUMN = 4
 img = ChunkyPNG::Canvas.from_file(options[:input])
 parts = slice_sprite_sheet2(img, NUM_SPRITE_SHEET_IN_ROW, NUM_SPRITE_SHEET_IN_COLUMN, options[:n])
 
-parts.each_with_index do |img, i|
-  img.save("output/#{options[:basename]}#{i}.png")
+parts.each_with_index do |img, i|]
+  img.save("output/#{options[:output]}#{i}")
 end
