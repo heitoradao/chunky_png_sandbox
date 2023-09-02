@@ -54,11 +54,11 @@ def slice_sprite_sheet2(sprite_sheet, rows, columns, index = nil)
   end
 end
 
-img = ChunkyPNG::Canvas.from_file(options[:input])
 
 NUM_SPRITE_SHEET_IN_ROW = 2
 NUM_SPRITE_SHEET_IN_COLUMN = 4
 
+img = ChunkyPNG::Canvas.from_file(options[:input])
 parts = slice_sprite_sheet2(img, NUM_SPRITE_SHEET_IN_ROW, NUM_SPRITE_SHEET_IN_COLUMN, options[:n])
 
 parts.each_with_index do |img, i|
