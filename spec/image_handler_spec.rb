@@ -25,9 +25,9 @@ RSpec.describe ImageHandler do
     x, y, w, h = [0, 0, one_char_sheet_width, one_char_sheet_height]
 
     puts x, y, w, h
-    #new_img = @img.crop(x, y, w, h)
+    new_img = @img.crop(x, y, w, h)
 
-    #expect(new_img).to_not be nil
+    expect(new_img).to_not be nil
   end
 
   it 'permit its client to use ChunkyPng obj' do
