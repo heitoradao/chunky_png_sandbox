@@ -27,6 +27,12 @@ end
 option_parser.parse!
 if ARGV.empty?
   warn 'Wrong number of arguments.'
+  puts <<~TXT
+      This script will scale down by a factor of 0.5
+
+      ex:
+        bundle exec scale_down.rb input/char1.png
+    TXT
   # option_parser.usage
   exit 1
 end
