@@ -6,13 +6,11 @@ RSpec.describe ImageHandler do
   end
 
   it 'can be instantiated' do
-    obj = ImageHandler.new('input/Wizard_f.png')
-
-    expect(obj).to_not be nil
+    expect(@img).to_not be nil
   end
 
   it 'can crop an image' do
-    pending
+    #pending
     # o o o o
     # o o o o
     # . . .
@@ -22,10 +20,14 @@ RSpec.describe ImageHandler do
     # 624 x 576
 
     one_char_sheet_width = 624 / 4
-    one_char_sheet_heght = 576 / 2
+    one_char_sheet_height = 576 / 2
 
-    x, y, w, h = [0, 0, 624 / 4, 576 / 2]
+    x, y, w, h = [0, 0, one_char_sheet_width, one_char_sheet_height]
+
+    puts x, y, w, h
     new_img = @img.crop(x, y, w, h)
+
+    expect(new_img).to_not be nil
   end
 
   it 'permit its client to use ChunkyPng obj' do
