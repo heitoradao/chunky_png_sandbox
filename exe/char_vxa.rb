@@ -3,7 +3,6 @@
 
 require 'chunky_png'
 require_relative '../lib/image_handler'
-require 'pry'
 
 # VXA sprite characters is a matrix of matrixes.
 # One single sprite char have the form:
@@ -13,8 +12,8 @@ require 'pry'
 # | a b c |
 
 # The matrix of chars have the form:
-# | 1 2 3 4 |
-# | 5 6 7 8 |
+# | 0 1 2 3 |
+# | 4 5 6 7 |
 
 n = 5 # line 2, col 2
 # Creating an image from scratch, save as an interlaced PNG
@@ -29,8 +28,6 @@ crop = sprite_sheet.crop(n % 4 * width_one, n / 4 * height_one, width_one, heigh
 # new_image.compose!(one_sheet)
 
 crop.save('output/!$witch.png', :interlace => false)
-
-binding.pry
 
 if crop[1,1] == ChunkyPNG::Color::TRANSPARENT
   puts 'the first pixel is transparent!'
