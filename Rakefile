@@ -5,3 +5,11 @@ task :clean do |_t, args|
   puts files.each {|f| File.unlink(f) }
 end
 
+desc 'Run rspec'
+task :rspec do |_t, args|
+  cmd = 'rspec'
+  system cmd
+end
+
+task :default => [:rspec]
+
