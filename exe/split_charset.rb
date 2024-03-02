@@ -7,7 +7,9 @@ require 'optparse'
 options = {
   input: 'input/character1.png',
   output: 'part_',
-  n: nil
+  n: nil,
+  rows: 2,
+  columns: 4
 }
 
 option_parser = OptionParser.new do |opts|
@@ -26,11 +28,19 @@ option_parser = OptionParser.new do |opts|
     end
   end
 
+  opts.on('-r', '--rows INT') do |rows|
+    options[:rows] = rows
+  end
+
+  opts.on('-c', '--columns INT') do |columns|
+    options[:columns] = columns
+  end
+
   opts.on('-h', '--help') do
     print opts
     puts <<~TXT
       Examples:
-        exe/split_charset.rb -i input/chara1.png -n 5 -b mage
+        exe/split_charset.rb -i input/chara1.png -n 5 -o mage
     TXT
     exit
   end
@@ -59,8 +69,8 @@ NUM_SPRITE_SHEET_IN_ROW = 2
 NUM_SPRITE_SHEET_IN_COLUMN = 4
 
 img = ChunkyPNG::Canvas.from_file(options[:input])
-parts = slice_sprite_sheet2(img, NUM_SPRITE_SHEET_IN_ROW, NUM_SPRITE_SHEET_IN_COLUMN, options[:n])
+parts = slice_sprite_sheet2(img, options[:rows], options[:columns], options[:n])
 
-parts.each_with_index do |img, i|]
-  img.save("output/#{options[:output]}#{i}")
+parts.each_with_index do |img, i|
+  img.save("output/#{options[:output]}#{i}.png")
 end
