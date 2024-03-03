@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
 require 'chunky_png'
+require 'forwardable'
 
 class ImageHandler
+  extend Forwardable
+
+  def_delegator :@image, :crop
+
   attr_accessor :filename, :image
 
   def initialize(filename)
