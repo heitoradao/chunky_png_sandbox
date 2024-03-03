@@ -5,7 +5,7 @@ require 'chunky_png'
 require 'optparse'
 
 options = {
-  input: 'input/character1.png',
+  input: 'input/chara1.png',
   output: 'part_',
   n: nil,
   rows: 2,
