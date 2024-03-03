@@ -4,6 +4,13 @@
 
 require 'chunky_png'
 
+puts <<~TXT
+    This script will try to read some metadata of file avatar.png
+    Then it will create output/with_metadata_after.png
+    Author = "altered from ruby"
+
+    TXT
+
 # Accessing metadata
 image = ChunkyPNG::Image.from_file('input/avatar.png')
 puts image.metadata['Title']

@@ -11,6 +11,8 @@ options = {
 }
 
 option_parser = OptionParser.new do |opts|
+  opts.banner = "Usage: scale_down.rb [options] some_file_2x.png"
+
   opts.on('-o', '--output OUTPUT_DIRECTORY',
           'The directory to write the processed images.') do |directory|
     options[:output_directory] = directory
@@ -27,6 +29,12 @@ end
 option_parser.parse!
 if ARGV.empty?
   warn 'Wrong number of arguments.'
+  puts <<~TXT
+      This script will scale down by a factor of 0.5
+
+      ex:
+        bundle exec scale_down.rb input/chara1.png
+    TXT
   # option_parser.usage
   exit 1
 end
